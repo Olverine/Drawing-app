@@ -1,0 +1,62 @@
+<!doctype HTML>
+<head>
+<title>Draw</title>
+<link rel="stylesheet" type="text/css" href="../style/style.css"/>
+<script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+	<div id=content>
+
+		<div id="cookieBox">
+			<h1>This site uses cookies!</h1>
+			<p>bla bla bla. Legal bullshit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<button onclick="AgreeCookie()">I understand</button>
+		</div>
+
+		<div id="nameBox">
+			<div id="blocker"></div>
+			Please enter your name: 
+			<input type="text" name="" id="nameInput"><br><br>
+			<button onclick="Join()">Join</button>
+		</div>
+
+		<h1>DRAW!</h1>
+		<canvas width="640" height="400" id="canvas"></canvas><br>
+
+		<div id="toolbar">
+			<input type="color" id="color">
+			<input type="range" min="1" max="10" value="1" id="sizeRange">
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../js/cookies.js"></script>
+	<script type="text/javascript" src="../js/draw.js"></script>
+	<script type="text/javascript">
+		if(getCookie("agreement") == false){
+			document.getElementById('cookieBox').style.display = "block";
+		}
+
+		if(getCookie("name") == ""){
+			document.getElementById('nameBox').style.display = "block";
+		}else{
+			SetName(getCookie("name"));
+		}
+
+		function AgreeCookie(){
+			setCookie('agreement', true, 90);
+			document.getElementById('cookieBox').style.display = "none";
+		}
+
+		function Join(){
+			var name = document.getElementById('nameInput').value;
+			setCookie("name", name, 90);
+			SetName(name);
+		}
+	</script>
+</body>
