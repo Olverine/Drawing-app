@@ -38,8 +38,8 @@ c.onmousemove = function(evt){
 	}
 }
 
-function getMousePos(canvas, evt) {
-    var rect = canvas.getBoundingClientRect();
+function getMousePos(canv, evt) {
+    var rect = canv.getBoundingClientRect();
     return {
       x: evt.clientX - rect.left,
       y: evt.clientY - rect.top
@@ -47,7 +47,7 @@ function getMousePos(canvas, evt) {
 }
 
 function SetName(name){
-	socket.emit("contributor", name);
+	socket.emit("login", name);
 }
 
 socket.on("draw", function(startX, startY, x, y, color, width){
@@ -58,4 +58,28 @@ socket.on("draw", function(startX, startY, x, y, color, width){
 	ctx.strokeStyle = color;
 	ctx.lineCap = 'round';
 	ctx.stroke();
+});
+
+socket.on("userUpdate", function(users){
+	console.log("Updating user info");
+
+	var box = document.getElementById("playerBox");
+	while(box.firstChild){
+		box.removeChild(box.firstChild);
+	}
+
+	for (var i = 0; i < users.length; i++) {
+		var userBox = document.createElement("div");
+		userBox.className = "userBox";
+
+		var img = document.createElement("img");
+		img.src = "http://192.168.2.105:3000/id?s="+users[i];
+		userBox.appendChild(img);
+
+		var nameTag = document.createElement("h5");
+		nameTag.innerHTML = users[i];
+		userBox.appendChild(nameTag);
+
+		document.getElementById("playerBox").appendChild(userBox);
+	};
 });

@@ -10,7 +10,7 @@
 
 		<div id="cookieBox">
 			<h1>This site uses cookies!</h1>
-			<p>bla bla bla. Legal bullshit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			<p>bla bla bla. Legal stuff. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
@@ -27,11 +27,15 @@
 		</div>
 
 		<h1>DRAW!</h1>
-		<canvas width="640" height="400" id="canvas"></canvas><br>
+		<canvas width="640" height="400" id="canvas"></canvas>
 
 		<div id="toolbar">
-			<input type="color" id="color">
-			<input type="range" min="1" max="10" value="1" id="sizeRange">
+			<label>Color</label>
+			<input type="color" id="color"><br><br>
+			<label>Size</label>
+			<input type="range" min="1" max="10" value="1" id="sizeRange"><br><br>
+		</div>
+		<div id="playerBox">
 		</div>
 	</div>
 
@@ -57,6 +61,7 @@
 			var name = document.getElementById('nameInput').value;
 			setCookie("name", name, 90);
 			SetName(name);
+			document.getElementById('nameBox').style.display = "none";
 		}
-	</script>
+	</script> 
 </body>

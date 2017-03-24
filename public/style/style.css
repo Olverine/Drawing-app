@@ -12,12 +12,16 @@ h1{
 
 canvas{
 	margin-left: calc(50vw - 320px);
-	background-color: #fff;
-	/*-webkit-box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.5);
-	-moz-box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.5);
-	box-shadow: 0px 0px 100px 0px rgba(0,0,0,0.5);*/
-	border: 1px solid #aaa;
 	cursor: crosshair;
+	float: left;
+}
+
+canvas, #toolbar, #playerBox{
+	background-color: #fff;
+	-webkit-box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.25);
+	border: 1px solid #aaa;
 }
 
 #content{
@@ -28,13 +32,17 @@ canvas{
 }
 
 #toolbar{
-	background-color: #fff;
-	border: 1px solid #aaa;
-	margin-top: 48px;
-	position: absolute;
-	width: 90vw;
-	left: 10vh;
+	float: left;
+	padding: 1em;
+	margin-left: 1em;
+}
 
+#playerBox{
+	padding: 1em;
+	width: 48em;
+	margin: 0px auto;
+	margin-top: 480px;
+	height: 60px;
 }
 
 #cookieBox, #nameBox{
@@ -48,7 +56,11 @@ canvas{
 	display: none;
 }
 
-#cookieBox, #nameBox > button{
+#nameBox{
+	margin-top: 3em;
+}
+
+#cookieBox > button, #nameBox > button{
 	background-color: #44ff44;
 	padding: 1em;
 	border-radius: 0.5em;
@@ -63,4 +75,21 @@ canvas{
 	width: 100vw;
 	height: 100vh;
 	z-index: -100;
+}
+
+.userBox{
+	margin-right: 1em;
+	float: left;
+}
+
+.userBox > img{
+	-webkit-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.25);
+	-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.25);
+	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.25);
+}
+
+.userBox > h5{
+	display: inline;
+	text-align: center;
+	margin-left: -60px;
 }
