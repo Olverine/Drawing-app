@@ -57,3 +57,9 @@ http.listen(3000, function(){
 	console.log('Server running!');
 	console.log('listening on port: 3000');
 });
+
+setInterval(function(){
+	console.log('Updating user information');
+	users = [];
+	io.emit('reregister');
+}, 3000);
