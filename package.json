@@ -1,17 +1,23 @@
 {
-  "name": "node",
-  "version": "4.2.6",
-  "description": "",
+  "name": "Draw",
+  "version": "0.0.1",
+  "description": "A collaborative drawing app",
+  "engines": {
+    "node": "4.2.6"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "Oliver Norin",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.2",
     "identicon": "^2.1.1",
     "socket.io": "^1.7.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Olverine/Drawing-app.git"
+  },
 }
