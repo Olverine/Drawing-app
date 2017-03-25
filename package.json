@@ -16,8 +16,4 @@
     "identicon": "^2.1.1",
     "socket.io": "^1.7.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Olverine/Drawing-app.git"
-  },
 }
