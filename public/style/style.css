@@ -14,6 +14,7 @@ canvas{
 	margin-left: calc(50vw - 320px);
 	cursor: crosshair;
 	float: left;
+	touch-action: none;
 }
 
 canvas, #toolbar, #playerBox{
@@ -25,7 +26,7 @@ canvas, #toolbar, #playerBox{
 }
 
 #content{
-	min-height: 100vh;
+	min-height: 80vh;
 	margin: 0px;
 	padding-top: 2em;
 	box-sizing: border-box;
@@ -93,4 +94,10 @@ canvas, #toolbar, #playerBox{
 	text-align: center;
 	margin-left: -60px;
 	margin-top: 76px
+}
+
+@media screen and (max-width: 1112px) {
+    body {
+        /*background-color: lightgreen;*/
+    }
 }

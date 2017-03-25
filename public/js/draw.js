@@ -46,9 +46,31 @@ function getMousePos(canv, evt) {
     };
 }
 
-function SetName(name){
-	socket.emit("login", name);
+function getTouchPos(canv, evt) {
+    var rect = canv.getBoundingClientRect();
+    var touch = evt.touches[0];
+    return {
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top
+    };
 }
+
+c.ontouchstart = function(evt){
+	pos = getTouchPos(c, evt);
+}
+
+c.ontouchmove = function(evt){
+	var lastPos = pos;
+	pos = getTouchPos(c, evt);
+
+	ctx.beginPath();
+	ctx.moveTo(lastPos.x, lastPos.y);
+	ctx.lineTo(pos.x, pos.y);
+	ctx.lineWidth = sizeRange.value;
+	ctx.strokeStyle = color.value;
+	ctx.stroke();
+	socket.emit("draw", lastPos.x, lastPos.y, pos.x, pos.y, color.value, sizeRange.value);
+};
 
 socket.on("draw", function(startX, startY, x, y, color, width){
 	ctx.beginPath();
@@ -58,28 +80,4 @@ socket.on("draw", function(startX, startY, x, y, color, width){
 	ctx.strokeStyle = color;
 	ctx.lineCap = 'round';
 	ctx.stroke();
-});
-
-socket.on("userUpdate", function(users){
-	console.log("Updating user info");
-
-	var box = document.getElementById("playerBox");
-	while(box.firstChild){
-		box.removeChild(box.firstChild);
-	}
-
-	for (var i = 0; i < users.length; i++) {
-		var userBox = document.createElement("div");
-		userBox.className = "userBox";
-
-		var img = document.createElement("img");
-		img.src = "http://192.168.2.105:3000/id?s="+users[i];
-		userBox.appendChild(img);
-
-		var nameTag = document.createElement("h5");
-		nameTag.innerHTML = users[i];
-		userBox.appendChild(nameTag);
-
-		document.getElementById("playerBox").appendChild(userBox);
-	};
 });
