@@ -6,6 +6,26 @@
 </head>
 
 <body>
+	<header>
+		<h3>DRAW!</h3>
+
+		<div id="toolbar">
+			<label>Color</label>
+			<input type="color" id="color">
+			<label>Size</label>
+			<input type="range" min="1" max="20" value="1" id="sizeRange">
+		</div>
+
+		<div id="nameBox">
+			<div id="blocker"></div>
+			Please enter your name: 
+			<input type="text" name="" id="nameInput"><br><br>
+			<button onclick="Join()">Join</button>
+		</div>
+
+		<div id="playerBox">
+		</div>
+	</header>
 	<div id=content>
 
 		<div id="cookieBox">
@@ -19,24 +39,8 @@
 			<button onclick="AgreeCookie()">I understand</button>
 		</div>
 
-		<div id="nameBox">
-			<div id="blocker"></div>
-			Please enter your name: 
-			<input type="text" name="" id="nameInput"><br><br>
-			<button onclick="Join()">Join</button>
-		</div>
-
-		<h1>DRAW!</h1>
 		<canvas width="640" height="400" id="canvas"></canvas>
 
-		<div id="toolbar">
-			<label>Color</label>
-			<input type="color" id="color"><br><br>
-			<label>Size</label>
-			<input type="range" min="1" max="10" value="1" id="sizeRange"><br><br>
-		</div>
-		<div id="playerBox">
-		</div>
 	</div>
 
 	<script type="text/javascript" src="../js/cookies.js"></script>

@@ -15,7 +15,7 @@ socket.on("userUpdate", function(users){
 		userBox.className = "userBox";
 
 		var img = document.createElement("img");
-		img.src = "http://192.168.2.105:3000/id?s="+users[i];
+		img.src = "http://"+window.location.hostname+"/id?s="+users[i];
 		userBox.appendChild(img);
 
 		var nameTag = document.createElement("h5");

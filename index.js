@@ -6,6 +6,9 @@ var identicon = require('identicon');
 var fs = require('fs');
 
 var users = [];
+var connections = [];
+
+var port = process.env.PORT || 8080;
 
 app.use(express.static('public'));
 
@@ -38,6 +41,8 @@ io.on('connection', function(socket){
 	console.log("user connected to socket!");
 	io.emit("userUpdate", users);
 
+	connections.push(socket.hej);
+
 	socket.on("login", function(name){
 		users.push(name);
 		console.log(name + " registered");
@@ -53,13 +58,13 @@ io.on('disconnect', function(){
     console.log("Someone disconnected");
 });
 
-http.listen(3000, function(){
+http.listen(port, function(){
 	console.log('Server running!');
-	console.log('listening on port: 3000');
+	console.log('listening on port: ' + port);
 });
 
 setInterval(function(){
 	console.log('Updating user information');
 	users = [];
 	io.emit('reregister');
-}, 3000);
+}, 10000);

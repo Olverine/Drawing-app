@@ -23,6 +23,10 @@ c.onmouseout = function(){
 }
 
 c.onmousemove = function(evt){
+	if(sizeRange.value > 20){
+		sizeRange.min = 1;
+		sizeRange.max = 20;
+	}
 	var lastPos = pos;
 	pos = getMousePos(c, evt);
 	if(drawing){
