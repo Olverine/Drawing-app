@@ -5,7 +5,7 @@
 <script src="/socket.io/socket.io.js"></script>
 </head>
 
-<body>
+<body ondragstart="return false;" ondrop="return false;">
 	<header>
 		<h3>DRAW!</h3>
 
@@ -28,17 +28,6 @@
 	</header>
 	<div id=content>
 
-		<div id="cookieBox">
-			<h1>This site uses cookies!</h1>
-			<p>bla bla bla. Legal stuff. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			<button onclick="AgreeCookie()">I understand</button>
-		</div>
-
 		<canvas width="640" height="400" id="canvas"></canvas>
 
 	</div>
@@ -47,10 +36,6 @@
 	<script type="text/javascript" src="../js/draw.js"></script>
 	<script type="text/javascript" src="../js/user.js"></script>
 	<script type="text/javascript">
-		if(getCookie("agreement") == false){
-			document.getElementById('cookieBox').style.display = "block";
-		}
-
 		if(getCookie("name") == ""){
 			document.getElementById('nameBox').style.display = "block";
 		}else{
@@ -69,4 +54,13 @@
 			document.getElementById('nameBox').style.display = "none";
 		}
 	</script> 
+
+	<!-- Begin Cookie Consent script https://cookiescript.info/ -->
+	<script type="text/javascript">
+	    window.cookieconsent_options = {"message":"This website uses cookies to ensure you get the best experience on our website","dismiss":"I understand!","learnMore":"More info","link":"cookieInfo","theme":"dark-bottom"}; var cookieconsent_ts = 1491672642; var cookieconsent_id = 'fc15c8cd-37e9-456f-9f1b-92464b162d7a';</script>
+
+	<script type="text/javascript" src="//cdn.cookiescript.info/libs/cookiescript.min.2.js"></script><script type="text/javascript">document.write("<div style='display: none'>");</script><a href="https://cookiescript.info/">Cookie consent script</a><script type="text/javascript">document.write("</div>");</script>
+
+	<noscript><a href="https://cookiescript.info/">Cookie consent script</a></noscript>
+	<!-- End Cookie Consent script -->
 </body>

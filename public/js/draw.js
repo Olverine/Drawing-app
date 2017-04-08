@@ -14,15 +14,11 @@ c.onmousedown = function(){
 	drawing = true
 }
 
-c.onmouseup = function(){
+document.onmouseup = function(){
 	drawing = false;
 }
 
-c.onmouseout = function(){
-	drawing = false;
-}
-
-c.onmousemove = function(evt){
+document.onmousemove = function(evt){
 	if(sizeRange.value > 20){
 		sizeRange.min = 1;
 		sizeRange.max = 20;

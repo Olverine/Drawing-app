@@ -1,0 +1,11 @@
+#back{
+	background-color: #44ff44;
+	padding: 1em;
+	border-radius: 0.5em;
+	border: none;
+}
+
+#content{
+	width: 70vw;
+	margin: 1em auto;
+}

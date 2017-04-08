@@ -18,6 +18,10 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + "/public/html/index.html");
 });
 
+app.get('/cookieInfo', function(req, res){
+	res.sendFile(__dirname + "/public/html/cookieInfo.html");
+});
+
 app.get('/id', function(req, res){
 	var name = req.query.s;
 	var filePath = __dirname + '/' + name +'.png'
