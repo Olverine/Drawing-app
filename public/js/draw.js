@@ -71,7 +71,7 @@ function draw(pos1, pos2, tool, color, width, emit){
 		break;
 
 		case "eraser":
-			ctx.clearRect(pos2.x - (sizeRange.value / 2), pos2.y - (sizeRange.value / 2), sizeRange.value, sizeRange.value);
+			ctx.clearRect(pos2.x - (width / 2), pos2.y - (width / 2), width, width);
 		break;
 	}
 
