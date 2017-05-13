@@ -26,13 +26,7 @@ document.onmousemove = function(evt){
 	var lastPos = pos;
 	pos = getMousePos(c, evt);
 	if(drawing){
-		ctx.beginPath();
-		ctx.moveTo(lastPos.x, lastPos.y);
-		ctx.lineTo(pos.x, pos.y);
-		ctx.lineWidth = sizeRange.value;
-		ctx.strokeStyle = color.value;
-		ctx.stroke();
-		socket.emit("draw", lastPos.x, lastPos.y, pos.x, pos.y, color.value, sizeRange.value);
+		draw(lastPos, pos, document.getElementById("toolSelect").value, color.value, sizeRange.value, true);
 	}else{
 		ctx.moveTo(pos.x,pos.y);
 	}
@@ -62,22 +56,37 @@ c.ontouchstart = function(evt){
 c.ontouchmove = function(evt){
 	var lastPos = pos;
 	pos = getTouchPos(c, evt);
-
-	ctx.beginPath();
-	ctx.moveTo(lastPos.x, lastPos.y);
-	ctx.lineTo(pos.x, pos.y);
-	ctx.lineWidth = sizeRange.value;
-	ctx.strokeStyle = color.value;
-	ctx.stroke();
-	socket.emit("draw", lastPos.x, lastPos.y, pos.x, pos.y, color.value, sizeRange.value);
+	draw(lastPos, pos, document.getElementById("toolSelect").value, color.value, sizeRange.value, true);
 };
 
-socket.on("draw", function(startX, startY, x, y, color, width){
-	ctx.beginPath();
-	ctx.moveTo(startX, startY);
-	ctx.lineTo(x, y);
-	ctx.lineWidth = width;
-	ctx.strokeStyle = color;
-	ctx.lineCap = 'round';
-	ctx.stroke();
+function draw(pos1, pos2, tool, color, width, emit){
+	switch(tool){
+		case "pen":
+			ctx.beginPath();
+			ctx.moveTo(pos1.x, pos1.y);
+			ctx.lineTo(pos2.x, pos2.y);
+			ctx.lineWidth = sizeRange.value;
+			ctx.strokeStyle = color.value;
+			ctx.stroke();
+		break;
+
+		case "eraser":
+			ctx.clearRect(pos2.x - (sizeRange.value / 2), pos2.y - (sizeRange.value / 2), sizeRange.value, sizeRange.value);
+		break;
+	}
+
+	if(emit)
+		socket.emit("draw", pos1.x, pos1.y, pos2.x, pos2.y, color, width, tool);
+}
+
+socket.on("draw", function(startX, startY, x, y, color, width, tool){
+	var pos1 = {
+		x: startX,
+		y: startY
+	};
+	var pos2 = {
+		x: x,
+		y: y
+	};
+	draw(pos1, pos2, tool, color, width, false);
 });

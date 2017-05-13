@@ -38,6 +38,9 @@ app.get('/id', function(req, res){
 
 	setTimeout(function(){
 		res.sendFile(filePath);
+		setTimeout(function(){
+			fs.unlink(filePath);
+		}, 100);
 	}, 100);
 });
 
@@ -53,8 +56,8 @@ io.on('connection', function(socket){
 		io.emit("userUpdate", users);
 	})
 
-	socket.on("draw", function(startX, startY, x, y, color, width){
-		io.emit("draw", startX, startY, x, y, color, width);
+	socket.on("draw", function(startX, startY, x, y, color, width, tool){
+		io.emit("draw", startX, startY, x, y, color, width, tool);
 	});
 });
 
