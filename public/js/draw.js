@@ -19,9 +19,9 @@ document.onmouseup = function(){
 }
 
 document.onmousemove = function(evt){
-	if(sizeRange.value > 20){
+	if(sizeRange.value > 40){
 		sizeRange.min = 1;
-		sizeRange.max = 20;
+		sizeRange.max = 40;
 	}
 	var lastPos = pos;
 	pos = getMousePos(c, evt);
@@ -67,6 +67,7 @@ function draw(pos1, pos2, tool, color, width, emit){
 			ctx.lineTo(pos2.x, pos2.y);
 			ctx.lineWidth = width;
 			ctx.strokeStyle = color;
+			ctx.lineCap="round";
 			ctx.stroke();
 		break;
 
