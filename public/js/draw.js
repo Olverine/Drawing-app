@@ -51,6 +51,7 @@ function getTouchPos(canv, evt) {
 
 c.ontouchstart = function(evt){
 	pos = getTouchPos(c, evt);
+	draw(pos, pos, document.getElementById("toolSelect").value, color.value, sizeRange.value, true);
 }
 
 c.ontouchmove = function(evt){
@@ -72,7 +73,7 @@ function draw(pos1, pos2, tool, color, width, emit){
 		break;
 
 		case "eraser":
-			ctx.clearRect(pos2.x - (width / 2), pos2.y - (width / 2), width, width);
+			ctx.clearRect(pos2.x - width, pos2.y - width, width * 2, width * 2);
 		break;
 	}
 
