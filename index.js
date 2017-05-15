@@ -39,10 +39,8 @@ app.get('/id', function(req, res){
 	setTimeout(function(){
 		res.sendFile(filePath);
 		setTimeout(function(){
-			try{
+			if(fs.existsSync(filePath)){
 				fs.unlink(filePath);
-			}catch(err){
-				console.log("Could not unlink file: " + filePath);
 			}
 		}, 100);
 	}, 100);
