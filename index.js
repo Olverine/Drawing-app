@@ -39,7 +39,11 @@ app.get('/id', function(req, res){
 	setTimeout(function(){
 		res.sendFile(filePath);
 		setTimeout(function(){
-			fs.unlink(filePath);
+			try{
+				fs.unlink(filePath);
+			}catch(err){
+				console.log("Could not unlink file: " + filePath);
+			}
 		}, 100);
 	}, 100);
 });

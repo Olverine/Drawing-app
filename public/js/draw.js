@@ -12,6 +12,7 @@ var drawing = false;
 
 c.onmousedown = function(){
 	drawing = true
+	draw(pos, pos, document.getElementById("toolSelect").value, color.value, sizeRange.value, true);
 }
 
 document.onmouseup = function(){
