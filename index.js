@@ -52,7 +52,7 @@ io.on('connection', function(socket){
 
 	socket.on("login", function(name){
 		users.push(name);
-		console.log(name + " registered");
+		//console.log(name + " registered");
 		io.emit("userUpdate", users);
 	})
 
@@ -71,7 +71,6 @@ http.listen(port, function(){
 });
 
 setInterval(function(){
-	console.log('Updating user information');
 	users = [];
 	io.emit('reregister');
 }, 10000);

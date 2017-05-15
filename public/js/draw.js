@@ -65,8 +65,8 @@ function draw(pos1, pos2, tool, color, width, emit){
 			ctx.beginPath();
 			ctx.moveTo(pos1.x, pos1.y);
 			ctx.lineTo(pos2.x, pos2.y);
-			ctx.lineWidth = sizeRange.value;
-			ctx.strokeStyle = color.value;
+			ctx.lineWidth = width;
+			ctx.strokeStyle = color;
 			ctx.stroke();
 		break;
 
