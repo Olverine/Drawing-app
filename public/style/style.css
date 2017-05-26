@@ -20,6 +20,10 @@ canvas, header{
 	border: 1px solid #aaa;
 }
 
+.grid{
+    background-image: url(../img/TRANSPARENT.png);
+}
+
 header{
 	padding: 1em;
 }
@@ -27,6 +31,7 @@ header{
 h3{
 	margin: 0px;
 	display: inline;
+	color: #9C27B0;
 }
 
 #content{

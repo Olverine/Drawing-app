@@ -7,6 +7,7 @@ var pos;
 
 var sizeRange = document.getElementById("sizeRange");
 var color = document.getElementById("color");
+var gridCheckbox = document.getElementById("gridCheck");
 
 var drawing = false;
 
@@ -93,3 +94,11 @@ socket.on("draw", function(startX, startY, x, y, color, width, tool){
 	};
 	draw(pos1, pos2, tool, color, width, false);
 });
+
+function toggleGrid(){
+	if(gridCheckbox.checked){
+		c.className = "grid";
+	}else{
+		c.className = "";
+	}
+}

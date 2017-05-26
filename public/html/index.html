@@ -2,6 +2,7 @@
 <head>
 <title>Draw</title>
 <link rel="stylesheet" type="text/css" href="../style/style.css"/>
+<link rel="stylesheet" type="text/css" href="../style/inputs.css"/>
 <script src="/socket.io/socket.io.js"></script>
 </head>
 
@@ -23,7 +24,7 @@
 
 		<div id="nameBox">
 			<div id="blocker"></div>
-			Please enter your name: 
+			Please enter your name:
 			<input type="text" name="" id="nameInput"><br><br>
 			<button onclick="Join()">Join</button>
 		</div>
@@ -33,6 +34,7 @@
 	</header>
 	<div id=content>
 
+		<input type="checkbox" id = "gridCheck" onChange="toggleGrid()">Transparency grid</input>
 		<canvas width="640" height="400" id="canvas"></canvas>
 
 	</div>
@@ -58,7 +60,7 @@
 			SetName(name);
 			document.getElementById('nameBox').style.display = "none";
 		}
-	</script> 
+	</script>
 
 	<!-- Begin Cookie Consent script https://cookiescript.info/ -->
 	<script type="text/javascript">
