@@ -2,6 +2,13 @@ body{
 	font-family: sans-serif;
 	background-color: #eee;
 	margin: 0px;
+	-webkit-touch-callout: none; /* iOS Safari */
+    	-webkit-user-select: none; /* Safari */
+     	-khtml-user-select: none; /* Konqueror HTML */
+       	-moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 
@@ -10,6 +17,7 @@ canvas{
 	cursor: crosshair;
 	float: left;
 	touch-action: none;
+	border: 2px solid #9C27B0;
 }
 
 canvas, header{
@@ -17,7 +25,6 @@ canvas, header{
 	-webkit-box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.25);
 	-moz-box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.25);
-	border: 1px solid #aaa;
 }
 
 .grid{
@@ -25,7 +32,9 @@ canvas, header{
 }
 
 header{
-	padding: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+	border-bottom: 1em solid #9C27B0;
 }
 
 h3{
@@ -54,22 +63,26 @@ h3{
 	padding: 3em;
 	position: fixed;
 	background-color: #fff;
-	border: 1px solid #aaa;
+	border: 1em solid #9C27B0;
 	left: 50%;
-	margin-left: -19em;
+	margin-left: -20em;
 	display: none;
+	border-radius: 1em;
 }
 
 #nameBox{
-	margin-top: 3em;
+	margin-top: 5em;
 }
 
 #cookieBox > button, #nameBox > button{
-	background-color: #44ff44;
+	background-color: #9C27B0;
 	padding: 1em;
 	border-radius: 0.5em;
 	border: none;
+	margin: 0px auto;
 	margin-bottom: -1em;
+	color: white;
+	font-size: 1.2em;
 }
 
 #blocker{
@@ -91,6 +104,7 @@ h3{
 	-moz-box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.25);
 	box-shadow: 0px 0px 16px 0px rgba(0,0,0,0.25);
 	height: 24px;
+	margin-top: 1em;
 }
 
 .userBox > h5{
