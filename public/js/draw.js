@@ -11,6 +11,10 @@ var gridCheckbox = document.getElementById("gridCheck");
 
 var drawing = false;
 
+alert = function(){
+	condole.log(new Error().stack);
+}
+
 c.onmousedown = function(){
 	drawing = true
 	draw(pos, pos, document.getElementById("toolSelect").value, color.value, sizeRange.value, true);
@@ -75,7 +79,12 @@ function draw(pos1, pos2, tool, color, width, emit){
 		break;
 
 		case "eraser":
-			ctx.clearRect(pos2.x - width, pos2.y - width, width * 2, width * 2);
+			var p1 = [pos1.x, pos1.y];
+			var p2 = [pos2.x, pos2.y];
+			var points = bresenham(p1, p2);
+			for(var i = 0; i < points.length; i++){
+				ctx.clearRect(points[i][0] - width, points[i][1] - width, width * 2, width * 2);
+			}
 		break;
 	}
 
