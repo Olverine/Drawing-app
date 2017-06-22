@@ -6,7 +6,6 @@ var identicon = require('identicon');
 var fs = require('fs');
 
 var users = [];
-var connections = [];
 
 var port = process.env.PORT || 8080;
 
@@ -48,31 +47,30 @@ app.get('/id', function(req, res){
 
 io.on('connection', function(socket){
 	console.log("user connected to socket!");
-	io.emit("userUpdate", users);
-
-	connections.push(socket.hej);
+	socket.emit("userUpdate", users);
 
 	socket.on("login", function(name){
-		users.push(name);
-		//console.log(name + " registered");
+		socket.name = name;
+		users.push(socket.name);
+		console.log(socket.name + " joined");
 		io.emit("userUpdate", users);
 	})
 
 	socket.on("draw", function(startX, startY, x, y, color, width, tool){
 		io.emit("draw", startX, startY, x, y, color, width, tool);
 	});
-});
 
-io.on('disconnect', function(){
-    console.log("Someone disconnected");
+	socket.on('disconnect', function(){
+		var index = users.indexOf(socket.name);
+		if (index > -1) {
+			users.splice(index, 1);
+		}
+		io.emit("userUpdate", users);
+		console.log(socket.name + " left")
+	});
 });
 
 http.listen(port, function(){
 	console.log('Server running!');
 	console.log('listening on port: ' + port);
 });
-
-setInterval(function(){
-	users = [];
-	io.emit('reregister');
-}, 10000);
